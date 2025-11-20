@@ -3,6 +3,7 @@ import Button from './Button'
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { MdStarRate } from "react-icons/md";
 import { LiaStarHalfSolid } from "react-icons/lia";
+import { TbTriangleFilled } from "react-icons/tb";
 const HeroBanner = () => {
   return (
     <div>
@@ -13,13 +14,15 @@ const HeroBanner = () => {
       <div className='flex space-x-4 text-white mt-4'>
            <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora rounded-lg  border-white"><p className='opacity-[75%]'>Buy Now</p></Button>
            <div className='flex space-x-0'>
-            <FaRegCirclePlay className='w-[70px] h-[70px]'/>
+            <div className='w-[70px] h-[70px] border-2 border-[#ffffff] rounded-full '>
+                        <TbTriangleFilled className='w-[34px] h-[34px] rotate-90 text-[#c7c9c6] ml-[18px] mt-4'/>
+            </div>
              <Button className="font-fm w-[180px] h-[76px] font-[400] text-[25px] opacity-[75%]">Live Demo...</Button>
            </div>
       </div>
     </div>
 
-    <div className='w-[512px] h-[719px] mr-10 mt-[119] shadow-[0_9px_18.4px_0_#00000040]  '>
+    <div className='w-[512px] h-[719px] mr-10 mt-[119] '>
         <img src='./c8eb5b1abede1308e0eaf899d1f7faae62a0c2f6.png' className='w-[459px] absolute top-[119px] left-[1198px] z-10'/>
      <div className='h-[644px] border border-white/40 rounded-[80px] top-[76px] w-[512px] relative backdrop-blur-[25px] shadow-[0_9px_18.4px_0_#00000040]'>
          <p className='font-[400] font-flora text-[23px] backdrop-blur-[15px] text-white absolute top-96 opacity-[75%] left-[81px]'>Indore Plant</p>
