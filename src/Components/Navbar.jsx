@@ -53,29 +53,54 @@ const Navbar = () => {
         </div>
 
 
-         {open && (
-        <div
-          className="
-          fixed inset-0 bg-black/90 
-          flex flex-col items-center justify-center
-          gap-10 text-white text-3xl font-semibold
-          z-50 lg:hidden
-        "
-        >
-          {/* Close Button */}
-          <button
-            className="absolute top-6 right-6 text-4xl"
-            onClick={() => setOpen(false)}
-          >
-            <IoClose />
-          </button>
+        {open && (
+  <div className="fixed inset-0 bg-black/90 flex flex-col items-center justify-center gap-10 text-white text-3xl font-semibold z-50 lg:hidden">
+    <button
+      className="absolute top-6 right-6 text-4xl"
+      onClick={() => setOpen(false)}
+    >
+      <IoClose />
+    </button>
 
-          <p onClick={() => setOpen(false)} className="cursor-pointer">Home</p>
-          <p onClick={() => setOpen(false)} className="cursor-pointer">Plants Type</p>
-          <p onClick={() => setOpen(false)} className="cursor-pointer">More</p>
-          <p onClick={() => setOpen(false)} className="cursor-pointer">Contact</p>
-        </div>
-      )}
+    <p
+      onClick={() => {
+        document.getElementById("home").scrollIntoView({ behavior: "smooth" });
+        setOpen(false);
+      }}
+      className="cursor-pointer"
+    >
+      Home
+    </p>
+    <p
+      onClick={() => {
+        document.getElementById("plants").scrollIntoView({ behavior: "smooth" });
+        setOpen(false);
+      }}
+      className="cursor-pointer"
+    >
+      Plants Type
+    </p>
+    <p
+      onClick={() => {
+        document.getElementById("more").scrollIntoView({ behavior: "smooth" });
+        setOpen(false);
+      }}
+      className="cursor-pointer"
+    >
+      More
+    </p>
+    <p
+      onClick={() => {
+        document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+        setOpen(false);
+      }}
+      className="cursor-pointer"
+    >
+      Contact
+    </p>
+  </div>
+)}
+
     </nav>
   )
 }
