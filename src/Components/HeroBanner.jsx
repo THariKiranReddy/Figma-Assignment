@@ -30,12 +30,12 @@ const HeroBanner = () => {
       <div className='flex space-x-4 text-white mt-4'>
            <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora rounded-lg  border-white "  onClick={() =>
     document.getElementById("buy").scrollIntoView({ behavior: "smooth" })}><p className='opacity-[75%]'>Buy Now</p></Button>
-           <div className='flex space-x-0'>
+       <a href="https://youtu.be/RG3vCEywZ6o" target="_blank"><div className='flex space-x-0 cursor-pointer'>
             <div className='w-[70px] h-[70px] border-2 border-[#ffffff] rounded-full '>
                         <TbTriangleFilled className='w-[34px] h-[34px] rotate-90 text-[#c7c9c6] ml-[18px] mt-4'/>
             </div>
-             <a href="https://www.nature.com/articles/s41561-025-01710-7" target="_blank"><Button className="font-fm w-[180px] h-[76px] font-[400] text-[25px] opacity-[75%]">Live Demo...</Button></a>
-           </div>
+             <Button className="font-fm w-[180px] h-[76px] font-[400] text-[25px] opacity-[75%]">Live Demo...</Button>
+           </div></a> 
       </div>
     </div>
 
