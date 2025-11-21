@@ -4,7 +4,18 @@
 
 ## Components
 
-  Navbar, HeroBanner, PlantCard ,ProductsCard, SectionTitle, Button, TestimonialCard, Footer
+  * Navbar - Main navigation with links and cart icon.
+  * HeroBanner - Introductory banner section.
+  * PlantCard / ProductsCard - Display product information.
+  * SectionTitle - Reusable component for section headings.
+  * Button - Reusable button component.
+  * TestimonialCard - Displays customer reviews with navigation.
+  * Footer - Footer section with additional info and links. 
+  * CartContext - This context provides data and actions to child components through React's Context API.
+
+## Data Flow
+  
+  The application's state and data, such as product info and cart details, are managed globally via a React Context called CartContext. This context provides data and actions to child components through React's Context API, enabling components like ProductsCard and Navbar to access and manipulate shared state seamlessly.
 
 ## Tech Stack used
   

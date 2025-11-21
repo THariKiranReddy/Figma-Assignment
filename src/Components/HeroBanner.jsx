@@ -1,37 +1,70 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Button from './Button'
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { MdStarRate } from "react-icons/md";
 import { LiaStarHalfSolid } from "react-icons/lia";
 import { TbTriangleFilled } from "react-icons/tb";
+import { AppContext } from '../CartContext';
 const HeroBanner = () => {
+  const {handleAddToCart,bannerData} = useContext(AppContext);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => prev === bannerData.length - 1 ? 0 : prev+1);
+    },3000);
+    return() => clearInterval(interval);
+  },[]);
+
+  const nextSlide = ()=>{
+   setCurrentIndex((prev) =>
+      prev === bannerData.length - 1 ? 0 : prev + 1
+  );
+  };
+  const item = bannerData[currentIndex];
   return (
     <div>
     <div className='flex justify-between' >
-    <div className='  mt-[80px] mx-11 h-[280px]'>
+    <div className='mt-[80px] mx-11 h-[280px]'>
       <h1 className='text-white font-flora font-[600] text-[118px] font-semi-bold opacity-[75%] h-[143px]'>Earth’s Exhale</h1>
       <p className='w-[775px] text-white font-flora font-medium text-[23px] opacity-[75%] mt-2'>"Earth Exhale" symbolizes the purity and vitality of the Earth's natural environment and its essential role in sustaining life.</p>
       <div className='flex space-x-4 text-white mt-4'>
-           <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora rounded-lg  border-white"><p className='opacity-[75%]'>Buy Now</p></Button>
+           <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora rounded-lg  border-white "  onClick={() =>
+    document.getElementById("buy").scrollIntoView({ behavior: "smooth" })}><p className='opacity-[75%]'>Buy Now</p></Button>
            <div className='flex space-x-0'>
             <div className='w-[70px] h-[70px] border-2 border-[#ffffff] rounded-full '>
                         <TbTriangleFilled className='w-[34px] h-[34px] rotate-90 text-[#c7c9c6] ml-[18px] mt-4'/>
             </div>
-             <Button className="font-fm w-[180px] h-[76px] font-[400] text-[25px] opacity-[75%]">Live Demo...</Button>
+             <a href="https://www.nature.com/articles/s41561-025-01710-7" target="_blank"><Button className="font-fm w-[180px] h-[76px] font-[400] text-[25px] opacity-[75%]">Live Demo...</Button></a>
            </div>
       </div>
     </div>
 
     <div className='w-[512px] h-[719px] mr-10 mt-[119] '>
-        <img src='./c8eb5b1abede1308e0eaf899d1f7faae62a0c2f6.png' className='w-[459px] absolute top-[119px] left-[1198px] z-10'/>
+        <img src={item.img} className='w-[459px] absolute top-[119px] left-[1198px] z-10'/>
      <div className='h-[644px] border border-white/40 rounded-[80px] top-[76px] w-[512px] relative backdrop-blur-[25px] shadow-[0_9px_18.4px_0_#00000040]'>
-         <p className='font-[400] font-flora text-[23px] backdrop-blur-[15px] text-white absolute top-96 opacity-[75%] left-[81px]'>Indore Plant</p>
-         <p className='font-[400] text-[38px] text-white top-[412px] font-flora absolute opacity-[75%] left-[81px]'>Aglaonema  plant</p>
-         <img src="./65c9b2e2178b53eba63dace1c4f1d8c96673ade2.png" className='absolute text-white w-[20px] h-[20px] top-[430px] right-[35px]'/>
-         <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora opacity-[75%] rounded-lg  border-white absolute top-[480px] text-white left-[81px]">Buy Now</Button>
-          <div className='absolute top-[570px] left-[236px] flex gap-4 '>
-      <span className='w-[21px] h-[6px] bg-white border rounded-lg'></span><span className='w-[6px] h-[6px] bg-white border rounded-lg'></span><span className='w-[6px] h-[6px] bg-white border rounded-lg'></span>
-    </div>
+         <p className='font-[400] font-flora text-[23px] backdrop-blur-[15px] text-white absolute top-96 opacity-[75%] left-[81px]'>{item.p1}</p>
+         <p className='font-[400] text-[38px] text-white top-[412px] font-flora absolute opacity-[75%] left-[81px]'>{item.p2}</p>
+         <img src='/65c9b2e2178b53eba63dace1c4f1d8c96673ade2 (1).png' className='absolute text-white w-[20px] h-[20px] top-[430px] right-[35px] cursor-pointer' onClick={nextSlide} />
+         <Button className="border-2 w-[217px] h-[64px] text-[28px] font-flora opacity-[75%] rounded-lg  border-white absolute top-[480px] text-white left-[81px]" onClick={()=>handleAddToCart(item)}>Buy Now</Button>
+        
+        {/* Dots */}
+        <div className="absolute top-[570px] left-[236px] flex gap-4">
+  {[0, 1, 2].map((dot) => {
+    const isActive = dot === currentIndex % 3;
+
+    return (
+      <span
+        key={dot}
+        className={`
+          ${isActive ? "w-[21px]" : "w-[6px]"}
+          h-[6px] bg-white rounded-lg transition-all duration-300
+        `}
+      ></span>
+    );
+  })}
+</div>
+
+
      </div>
     </div>
     </div>
